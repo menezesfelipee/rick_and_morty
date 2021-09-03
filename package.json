@@ -1,0 +1,28 @@
+{
+  "name": "rick_and_morty",
+  "version": "1.0.0",
+  "description": "> Projeto realizado pela Blue EdTech no módulo 3",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/menezesfelipee/rick_and_morty.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/menezesfelipee/rick_and_morty/issues"
+  },
+  "homepage": "https://github.com/menezesfelipee/rick_and_morty#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
