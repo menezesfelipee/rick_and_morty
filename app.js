@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const { connectDB } = require("./database"); // Importa a função de conexão com o MongoDB Atlas
 const cors = require("cors");
