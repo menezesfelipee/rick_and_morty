@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
     // Insere o personagem
     await characters.insertOne(obj);
     
-    res.send(obj);
+    res.status(201).send(obj);
 });
 
 module.exports = router;

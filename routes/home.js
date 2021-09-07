@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
             "Excluir": "https://rickandmorty-back.herokuapp.com/characters/delete/ + _id"
         }
     }
-    res.send(welcome);
+    res.status(200).send(welcome);
 });
 
 module.exports = router;

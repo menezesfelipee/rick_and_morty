@@ -30,7 +30,7 @@ router.put("/:id", async (req, res) => {
         }
     );
 
-    res.send(await getCharacterById(id));
+    res.status(200).send(await getCharacterById(id));
 });
 
 module.exports = router;

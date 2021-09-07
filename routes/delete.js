@@ -17,7 +17,7 @@ router.delete("/:id", async (req, res) => {
     // Deleta o personagem
     await characters.deleteOne({ _id: ObjectId(id) });
 
-    res.send({ message: "Deletado com sucesso!" });
+    res.status(204).send({ message: "Deletado com sucesso!" });
 });
 
 module.exports = router;

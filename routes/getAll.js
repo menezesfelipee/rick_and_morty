@@ -6,7 +6,7 @@ router.use((req, res, next) => next());
 router.get("/", async (req, res) => {
     const characters = await getCharacters();
     
-    res.send(characters);
+    res.status(200).send(characters);
 });
 
 module.exports = router;
