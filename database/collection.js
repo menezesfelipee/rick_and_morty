@@ -6,7 +6,8 @@ const dbName = process.env.DB_NAME;
 
 const characters = client.db(dbName).collection("personagens");
 
-const getCharacters = () => characters.find({}).toArray();
+// Funções comumente usadas
+const getCharacters = async () => characters.find({}).toArray();
 const getCharacterById = async (id) => characters.findOne({ _id: ObjectId(id) });
 
 module.exports = {
@@ -14,5 +15,3 @@ module.exports = {
     getCharacters,
     getCharacterById
 }
-
-

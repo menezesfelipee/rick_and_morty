@@ -1,9 +1,12 @@
 const express = require("express");
-// Importa a conexão com o MongoDB Atlas
-const { connectDB } = require("./database");
+const { connectDB } = require("./database"); // Importa a função de conexão com o MongoDB Atlas
 const cors = require("cors");
 
-// Importando todas as rotas do arquivo ./routes/index.js
+// Importando biblioteca e funções de middlewares
+require("express-async-errors");
+const { notFound, serverError } = require("./middlewares");
+
+// Importando todas os endpoints a partir do arquivo ./routes/index.js
 const { home, getAll, getById, post, put, del } = require("./routes");
 
 // Intanciando o express
@@ -29,6 +32,13 @@ app.use(express.json());
     app.use("/characters/update/", put);
     app.use("/characters/delete/", del);
 
+    // Tratamento das rotas não encontradas
+    app.all("*", notFound);
+
+    // Middleware para tratamento de erros
+    app.use(serverError);
+
+    // Fazendo app rodar na porta especificada
     app.listen(port, () => console.log(`Aplicativo rodando em http://localhost:${port}.`));
 
 })();
