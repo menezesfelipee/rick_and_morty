@@ -27,7 +27,7 @@ app.use(express.json());
     app.options("*", cors());
 
     // Consumo das rotas
-    app.use("/home", home);
+    app.use("/", home);
     app.use("/characters", getAll);
     app.use("/characters/", getById);
     app.use("/characters/insert", post);
