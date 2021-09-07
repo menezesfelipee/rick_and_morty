@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { characters, getCharactersById, ObjectId } = require("../database");
+const { characters, getCharacterById, ObjectId } = require("../database");
 
 router.use((req, res, next) => next());
 
@@ -14,7 +14,7 @@ router.put("/:id", async (req, res) => {
             $set: obj
         }
     );
-    res.send(await getCharactersById(id));
+    res.send(await getCharacterById(id));
 });
 
 module.exports = router;
