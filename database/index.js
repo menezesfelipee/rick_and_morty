@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 
 const dbName = process.env.DB_NAME;
 const dbUrl = process.env.DB_URL;
@@ -13,13 +13,15 @@ async function connectDB() {
     client.connect(() => console.log('Conectado com sucesso!!!'));
 };
 
-const personagens = client.db("rick-and-morty").collection("personagens");
+const characters = client.db("rick-and-morty").collection("personagens");
 
-const getPersonagensValidos = () => personagens.find({}).toArray();
-const getPersonagemById = async (id) => personagens.findOne({ _id: ObjectId(id) });
+const getCharacters = () => characters.find({}).toArray();
+const getCharactersById = async (id) => characters.findOne({ _id: ObjectId(id) });
 
 module.exports = {
     connectDB,
-    personagens,
-    getPersonagensValidos,
-    getPersonagemById }
+    ObjectId,
+    characters,
+    getCharacters,
+    getCharactersById
+};
