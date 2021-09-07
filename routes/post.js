@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
     const obj = req.body;
 
     // Validação do personagem enviado
-    if (!obj || !obj.name || !obj.imgUrl) {
+    if (!obj || !obj.nome || !obj.imagemUrl) {
         res.status(400).send({ error: "Campos preenchidos incorretamente." });
         return;
     };
