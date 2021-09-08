@@ -9,10 +9,11 @@ const characters = client.db(dbName).collection("personagens");
 
 // Funções comumente usadas
 const getCharacters = async () => characters.find({}).toArray();
-const getCharacterById = async (id) => characters.findOne({ _id: ObjectId(id) });
+const getCharacterById = async (id) =>
+  characters.findOne({ _id: ObjectId(id) });
 
 module.exports = {
-    characters,
-    getCharacters,
-    getCharacterById
-}
+  characters,
+  getCharacters,
+  getCharacterById,
+};

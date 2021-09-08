@@ -34,4 +34,6 @@ app.all("*", notFound);
 app.use(serverError);
 
 // Fazendo app rodar na porta especificada
-app.listen(port, () => console.log(`Aplicativo rodando em http://localhost:${port}.`));
+app.listen(port, () =>
+  console.log(`Aplicativo rodando em http://localhost:${port}.`)
+);

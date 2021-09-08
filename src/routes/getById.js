@@ -4,20 +4,20 @@ const { connectDB, closeDB, getCharacterById } = require("../database");
 router.use((req, res, next) => next());
 
 router.get("/:id", async (req, res) => {
-    await connectDB();
+  await connectDB();
 
-    const { id } = req.params;
-    const character = await getCharacterById(id);
-    
-    // Validação de existência do personagem
-    if (!character) {
-        res.status(404).send({ error: "Personagem não encontrado." });
-        return;
-    };
+  const { id } = req.params;
+  const character = await getCharacterById(id);
 
-    await closeDB();
+  // Validação de existência do personagem
+  if (!character) {
+    res.status(404).send({ error: "Personagem não encontrado." });
+    return;
+  }
 
-    res.status(200).send(character);
+  await closeDB();
+
+  res.status(200).send(character);
 });
 
 module.exports = router;
