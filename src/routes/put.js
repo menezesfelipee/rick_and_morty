@@ -1,9 +1,11 @@
 const router = require("express").Router();
-const { characters, getCharacterById, ObjectId } = require("../database");
+const { characters, connectDB, closeDB, getCharacterById, ObjectId } = require("../database");
 
 router.use((req, res, next) => next());
 
 router.put("/:id", async (req, res) => {
+    await connectDB();
+
     const { id } = req.params;
     const obj = req.body;
     
@@ -21,16 +23,12 @@ router.put("/:id", async (req, res) => {
     };
     
     // Atualiza o personagem
-    await characters.updateOne(
-        {
-            _id: ObjectId(id)
-        },
-        {
-            $set: obj
-        }
-    );
+    await characters.updateOne({ _id: ObjectId(id) }, { $set: obj });
+    const newObj = await getCharacterById(id);
 
-    res.status(200).send(await getCharacterById(id));
+    await closeDB();
+
+    res.status(200).send(newObj);
 });
 
 module.exports = router;

@@ -1,10 +1,12 @@
-const { characters, ObjectId } = require("../database");
+const { connectDB, closeDB, characters, ObjectId } = require("../database");
 
 const router = require("express").Router();
 
 router.use((req, res, next) => next());
 
 router.delete("/:id", async (req, res) => {
+    connectDB();
+
     const { id } = req.params;
 
     // Validação de existência do personagem a ser alterado
@@ -17,7 +19,9 @@ router.delete("/:id", async (req, res) => {
     // Deleta o personagem
     await characters.deleteOne({ _id: ObjectId(id) });
 
-    res.status(204).send({ message: "Deletado com sucesso!" });
+    closeDB();
+
+    res.status(200).send({ message: "Deletado com sucesso!" });
 });
 
 module.exports = router;
